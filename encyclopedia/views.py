@@ -19,7 +19,8 @@ def readentry(request, title):
     # When there is now entry, render error.html
     if entry is None:
         return render(request, "encyclopedia/error.html", {
-            "errmsg": f"There is no entry called '{title}'."
+            "errmsg": f"There is no entry called '{title}'.",
+            "title": "Error"
         })
 
     # We already checked if there is any entry, but in case the file could not be retrieved render a diferent error
@@ -39,6 +40,7 @@ def readentry(request, title):
     })
 
 def search(request):
+    # Get the query
     query = request.GET.get("q", "")
 
     # Matching the entrys with the query
@@ -49,8 +51,9 @@ def search(request):
     if len(results) == 1 and results[0].lower() == query.lower():
         return HttpResponseRedirect(reverse("readentry", kwargs={"title":results[0]}))
 
-    # Else make a list of Mathes in the search template
+    # Else make a list of matches in the search template
     return render(request, "encyclopedia/search.html", {
         "entries": results,
-        "query": query
+        "query": query,
+        "title": "Search"
     })
