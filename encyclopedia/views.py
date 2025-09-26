@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 import markdown2
+import random
+
 
 from . import util
 
@@ -115,7 +117,7 @@ def editentry(request, title):
             return HttpResponseRedirect(reverse("readentry", kwargs={"title": title}))
 
     else:
-
+        # Disable title field. So you can see it as user but not change it.
         form = EntryForm(initial={"title": title, "text": entry_content})
         form.fields["title"].disabled = True
         form.fields["title"].required = False
@@ -126,3 +128,15 @@ def editentry(request, title):
             "form_action": reverse("editentry", kwargs={"title": title}),
             "entryname": title,
     })
+
+def randompage(request):
+    all_entries = util.list_entries()
+    
+    if len(all_entries) == 0:
+        return render(request, "encyclopedia/error.html", {
+            "errmsg": "There are no entries",
+            "page_title": "Error"
+        })
+
+    random_entry = random.choice(all_entries)
+    return HttpResponseRedirect(reverse("readentry", kwargs={"title": random_entry}))
