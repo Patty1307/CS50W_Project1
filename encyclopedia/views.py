@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 import markdown2
 
 from . import util
@@ -39,10 +41,15 @@ def readentry(request, title):
 def search(request):
     query = request.GET.get("q", "")
 
-    # Matching the entrys with der query
+    # Matching the entrys with the query
     entries = util.list_entries()
     results = [e for e in entries if query.lower() in e.lower()]
 
+    # If there is only one match in the list an the query is an exact match, open directly the entry
+    if len(results) == 1 and results[0].lower() == query.lower():
+        return HttpResponseRedirect(reverse("readentry", kwargs={"title":results[0]}))
+
+    # Else make a list of Mathes in the search template
     return render(request, "encyclopedia/search.html", {
         "entries": results,
         "query": query

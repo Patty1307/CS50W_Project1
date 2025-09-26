@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Found Pages</h1>
+    <h1>Found Pages for '{{ query }}'</h1>
 
     <ul>
         {% for entry in entries %}
@@ -13,7 +13,7 @@
             <a href="{% url 'readentry' entry %}">{{ entry }}</a>
             </li>
         {% empty %}
-        No Results found that contains '{{ query }}'.
+        No Results found.
         {% endfor %}
     </ul>
 
