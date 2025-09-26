@@ -1,3 +1,8 @@
+.Form {
+    margin-bottom: 10px;
+}
+
+
 body {
     margin: 0;
     background-color: white;
@@ -13,8 +18,10 @@ h1 {
 }
 
 textarea {
-    height: 90vh;
-    width: 80%;
+    height: 50vh;
+    width: 90%;
+    display: inline-block;
+    vertical-align:top;
 }
 
 .main {
@@ -35,4 +42,9 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+.aTagDivs{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

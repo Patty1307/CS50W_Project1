@@ -4,7 +4,7 @@
 
 <html lang="en">
     <head>
-        <title>{% if title %}{{ title }} - Encyclopedia{% else %}Encyclopedia{% endif %}</title>
+        <title>{% if page_title %}{{ page_title }} - Encyclopedia{% else %}Encyclopedia{% endif %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
@@ -19,7 +19,7 @@
                     <a href="{% url 'index' %}">Home</a>
                 </div>
                 <div>
-                    Create New Page
+                    <a href="{% url 'createentry' %}">Create New Page</a>
                 </div>
                 <div>
                     Random Page

@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block body %}
+    <h1 class="Form">{{ page_title }}</h1>
+    <div class="aTagDivs">
+        <a
+        href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">
+        Markdown Syntax
+        </a>
+    </div>
+   
+    <form action="{{ form_action }}" method="post">
+    {% csrf_token %} 
+     {% for field in form %}
+    <div class="mb-3">
+          {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+    </div>
+    {% endfor %}
+
+
+    <input type="submit">
+   </form>
+
+{% endblock %}
