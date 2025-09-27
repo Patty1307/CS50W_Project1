@@ -1,0 +1,3 @@
+# Patrick Star
+
+Patrick Star is a pink starfish and one of the main characters in the animated series **SpongeBob SquarePants**. He is SpongeBob's best friend, known for his simple-minded, carefree, and often clueless personality. Despite his lack of intelligence, Patrick is lovable, loyal, and provides much of the show's humor through his silly behavior and misunderstandings. He lives under a rock in the underwater city of Bikini Bottom.
